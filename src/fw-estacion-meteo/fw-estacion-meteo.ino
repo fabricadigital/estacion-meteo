@@ -106,7 +106,7 @@ void anemometroMedir() {
 
 void actualizarDatos() {
   switch(estadoPantalla) {
-    case 0:
+    case PANTALLA_TEMPERATURA:
       temperaturaAire = bme280.readTemperature(); // Leer temperatura del aire y guardarla en su variable
       imprimirTemperaturaAire();
       pantalla.fillScreen(ST7735_YELLOW); // Limpiar la pantalla con fondo amarillo
@@ -120,7 +120,7 @@ void actualizarDatos() {
       pantalla.setFont(&FreeSans9pt7b);  // Seleccionar la fuente pequeña
       pantalla.print(" C");
       break;
-    case 1:
+    case PANTALLA_HUMEDAD:
       humedadAire = bme280.readHumidity(); // Leer humedad relativa del aire
       imprimirHumedadAire();
       pantalla.fillScreen(ST7735_BLUE); // Limpiar la pantalla con fondo amarillo
@@ -134,7 +134,7 @@ void actualizarDatos() {
       pantalla.setFont(&FreeSans9pt7b);  // Seleccionar la fuente pequeña
       pantalla.print(" %");
       break;
-    case 2:
+    case PANTALLA_PRESION:
       presionBarometrica = bme280.readPressure() / 100; // Leer presión barométrica y convertirla a milibares
       imprimirPresionBarometrica();
       pantalla.fillScreen(ST7735_RED); // Limpiar la pantalla con fondo amarillo
@@ -148,7 +148,7 @@ void actualizarDatos() {
       pantalla.setFont(&FreeSans9pt7b);  // Seleccionar la fuente pequeña
       pantalla.print(" mbar"); // Es lo mismo que hPa
       break;
-    case 3:
+    case PANTALLA_VELOCIDADVIENTO:
       imprimirVelocidadDelViento();
       pantalla.fillScreen(ST7735_CYAN); // Limpiar la pantalla con fondo amarillo
       pantalla.setFont(&FreeSans9pt7b);  // Seleccionar la fuente pequeña
